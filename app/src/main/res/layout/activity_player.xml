@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="#FF000000">
+    <androidx.media3.ui.PlayerView android:id="@+id/player"
+        android:layout_width="match_parent" android:layout_height="match_parent"/>
+    <TextView android:id="@+id/info" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal" android:layout_marginTop="40dp"
+        android:background="@drawable/info_bg" android:paddingLeft="36dp" android:paddingRight="36dp"
+        android:paddingTop="16dp" android:paddingBottom="16dp" android:textColor="#FFFFFFFF"
+        android:textSize="38sp" android:textStyle="bold" android:visibility="gone"/>
+    <TextView android:id="@+id/status" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center" android:background="@drawable/info_bg" android:gravity="center"
+        android:padding="28dp" android:textColor="#FFFFFFFF" android:textSize="30sp" android:visibility="gone"/>
+</FrameLayout>

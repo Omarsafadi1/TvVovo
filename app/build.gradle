@@ -1,0 +1,51 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.vovo.tv'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.vovo.tv'
+        minSdk 21
+        targetSdk 34
+        versionCode 2
+        versionName '1.1'
+        // Repositório do GitHub de onde a TV baixa canais e fotos (ex.: 'usuario/TvVovo').
+        // Vazio = usa só o que vem dentro do app. O GitHub Actions preenche sozinho.
+        buildConfigField 'String', 'GITHUB_REPO', "\"${project.findProperty('repo') ?: ''}\""
+        buildConfigField 'String', 'GITHUB_BRANCH', "\"${project.findProperty('branch') ?: 'main'}\""
+    }
+
+    // A pasta "conteudo" (canais, logos e fotos) vai embutida no app
+    sourceSets { main { assets.srcDirs = ['../conteudo'] } }
+
+    signingConfigs {
+        release {
+            storeFile file('tvvovo.keystore')
+            storePassword 'tvvovo123'
+            keyAlias 'tvvovo'
+            keyPassword 'tvvovo123'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    buildFeatures { buildConfig true }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.media3:media3-exoplayer:1.4.1'
+    implementation 'androidx.media3:media3-exoplayer-hls:1.4.1'
+    implementation 'androidx.media3:media3-ui:1.4.1'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+}

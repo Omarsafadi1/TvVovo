@@ -1,0 +1,5 @@
+<resources>
+    <color name="bg">#FF101826</color>
+    <color name="tile">#FF1E2A3D</color>
+    <color name="focus">#FFFFC400</color>
+</resources>

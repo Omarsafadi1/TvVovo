@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:layoutDirection="ltr"
+    android:paddingLeft="40dp" android:paddingRight="40dp" android:paddingTop="24dp">
+
+    <!-- Cabeçalho: saudação à esquerda, TV + relógio à direita -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical">
+        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+            android:gravity="left|center_vertical" android:textAlignment="gravity"
+            android:text="أهلاً وسهلاً يا حسين 👋  اختر قناة"
+            android:textColor="#FFFFFFFF" android:textSize="32sp" android:textStyle="bold"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="📺" android:textSize="32sp" android:layout_marginRight="10dp"/>
+        <TextClock android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:format24Hour="HH:mm" android:format12Hour="HH:mm"
+            android:textColor="#FFFFFFFF" android:textSize="34sp" android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- Corpo: canais (esquerda) + fotos (direita) -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:orientation="horizontal" android:layout_marginTop="12dp">
+
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/grid"
+            android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"
+            android:clipToPadding="false" android:paddingTop="8dp" android:paddingBottom="32dp"
+            android:descendantFocusability="afterDescendants"/>
+
+        <FrameLayout android:id="@+id/photoFrame"
+            android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"
+            android:layout_marginLeft="24dp" android:layout_marginTop="18dp" android:layout_marginBottom="28dp"
+            android:background="@drawable/photo_bg" android:padding="6dp" android:focusable="false">
+            <ImageView android:id="@+id/photoBlur" android:layout_width="match_parent" android:layout_height="match_parent"
+                android:scaleType="centerCrop" android:alpha="0.55"/>
+            <ImageView android:id="@+id/photo" android:layout_width="match_parent" android:layout_height="match_parent"
+                android:scaleType="fitCenter"/>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>
